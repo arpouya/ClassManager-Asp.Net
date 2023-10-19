@@ -1,0 +1,95 @@
+﻿@page
+@model ClassManager.Pages.StudentDetailsModel
+@using ClassManager.Models
+
+<div class="card text-center" style="color:black;">
+    <div class="card-header">
+        <h4>@Model.Students.Firstname @Model.Students.Lastname</h4>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Father Name : @Model.Students.Fathername</h5>
+        <h5 class="card-text">Grade : @Model.Students.Grade</h5>
+        <h5 class="card-title">Age : @Model.Students.Age</h5>
+        <h5 class="card-title">Code : @Model.Students.Code</h5>
+    </div>
+    <div class="card-footer text-muted">
+        <form method="post">
+            <a href="/AddStudent?Id=@Model.Students.Id" class="btn btn-outline-primary">Edit @Model.Students.Firstname</a>
+            <input type="submit" class="btn btn-outline-danger" value="Delete @Model.Students.Firstname" />
+        </form>
+
+    </div>
+</div>
+
+<br />
+
+<div class="divcolor">
+
+        <div class="card">
+        <div class="card-header">
+            Report Detail
+        </div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                @{
+
+                    foreach (var rep in Model.Report)
+                    {
+                        <p>@rep.Classes.Classname</p>
+                        <p>@rep.Point</p>
+                        <p>@rep.DataReport</p>
+                    }
+
+                }
+
+            </blockquote>
+        </div>
+    </div>
+    
+    <br/>
+
+    <div class="card">
+        <div class="card-header">
+            Class Detail
+        </div>
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                @{
+
+                    foreach (var cls in Model.Students.Classes)
+                    {
+                        <p>Class Name : @cls.Classname</p>
+                        <p>Class Number : @cls.Studentsnumber</p>
+                        <p>Teacher Name : @cls.Teachername</p>
+                    }
+
+                }
+
+            </blockquote>
+        </div>
+    </div>
+
+    <br />
+
+    <div class="card">
+        <div class="card-body">
+            <span class="spo">@Model.Students.Firstname @Model.Students.Lastname</span> <span class="spt">Joined</span> The School In @Model.Students.DateCreate
+        </div>
+    </div>
+
+</div>
+
+
+<style>
+    .divcolor {
+        color: black;
+    }
+
+    .spo {
+        font-weight: 500;
+    }
+
+    .spt {
+        color: green;
+    }
+</style>

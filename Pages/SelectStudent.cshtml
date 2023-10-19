@@ -1,0 +1,60 @@
+﻿@page
+@model ClassManager.Pages.SelectStudentModel
+
+<form method="get">
+    <div class="col-md-4">
+    <label class="form-label">Select Student</label>
+    <select class="form-select" asp-for="StdId" required>
+        @{
+            foreach (var std in Model.StudentsL)
+            {
+                <option value="@std.Id">
+                    @std.Firstname
+                </option>
+            }
+        }
+    </select>
+    <div class="invalid-feedback">
+      Please Select A Class .
+    </div>
+</div>
+
+<br/>
+
+ <div class="col-md-12">
+        <button type="submit" class="button"> 
+            <span>
+                Continue&nbsp; <i class="fa-regular fa-hand-point-right fa-beat" style="color: white;"></i>
+            </span>
+        </button>
+    </div>
+</form>
+
+        <style>
+
+        .button {
+            --bg: #fff;
+            --hover-bg: #000;
+            --hover-text: #fff;
+            color: #000;
+            border: 1px solid var(--bg);
+            border-radius: 10px;
+            padding: 0.7em 1em;
+            background: var(--bg);
+            transition: 0.2s;
+        }
+
+        .button:hover {
+            
+            color: white;
+            transform: translate(-0.25rem,-0.25rem);
+            background: var(--hover-bg);
+            box-shadow: 0.25rem 0.25rem var(--bg);
+        }
+
+        .button:active {
+            transform: translate(0);
+            box-shadow: none;
+        }
+
+        </style>
